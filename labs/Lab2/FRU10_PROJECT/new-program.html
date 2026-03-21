@@ -1,0 +1,112 @@
+<!--
+Author: George Jacob
+ID: 240574
+Date: 3/21/2026
+Unit: IS312
+
+Description:
+This page contains a form that allows users to add a new program.
+The form collects Program Code and Program Name.
+JavaScript validation is used to ensure all fields are filled before submission.
+The form sends data to add-new-program.php using POST method.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Program</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f6f8;
+        text-align: center;
+        margin-top: 80px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    form {
+        background-color: white;
+        display: inline-block;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        text-align: left;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        background-color: #007BFF;
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    a {
+        display: inline-block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: white;
+        background-color: #28a745;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
+
+    a:hover {
+        background-color: #1e7e34;
+    }
+</style>
+
+<script>
+function validateForm() {
+    let code = document.forms["programForm"]["programCode"].value.trim();
+    let name = document.forms["programForm"]["programName"].value.trim();
+
+    if (code === "" || name === "") {
+        alert("All fields must be filled!");
+        return false;
+    }
+}
+</script>
+
+</head>
+<body>
+
+<h2>Add New Program</h2>
+
+<form name="programForm" action="add-new-program.php" method="POST" onsubmit="return validateForm()">
+
+    <label>Program Code:</label><br>
+    <input type="text" name="programCode" required>
+
+    <label>Program Name:</label><br>
+    <input type="text" name="programName" required>
+
+    <input type="submit" value="Submit">
+
+</form>
+
+<br>
+<a href="index.html">Back to Home</a>
+
+</body>
+</html>
